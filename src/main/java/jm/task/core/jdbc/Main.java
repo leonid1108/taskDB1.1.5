@@ -14,10 +14,8 @@ import java.sql.Statement;
 import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) throws SQLException {
-        // реализуйте алгоритм здесь
-        Util.getConnection();
+        Util.getSessionFactory();
 
         UserServiceImpl userServiceImpl = new UserServiceImpl();
         userServiceImpl.createUsersTable();
@@ -27,8 +25,7 @@ public class Main {
         userServiceImpl.saveUser("Ваня", "Опилкин", (byte) 20);
         userServiceImpl.saveUser("Гоша", "Шляпочкин", (byte) 22);
 
-        //userDaoJDBC.removeUserById(6);
-
+        userServiceImpl.removeUserById(2);
 
         List<User> list = userServiceImpl.getAllUsers();
         System.out.println(list);
